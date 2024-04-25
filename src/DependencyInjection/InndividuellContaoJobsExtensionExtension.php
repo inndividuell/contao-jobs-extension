@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 
-final class ContaoJobsExtensionExtension extends Extension
+final class InndividuellContaoJobsExtensionExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
