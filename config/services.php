@@ -17,11 +17,6 @@ return static function (ContainerConfigurator $container) {
 
     $container->services()
         ->set(SitemapListener::class)
-        ->args([
-            service(ScopeMatcher::class),
-            service('security.helper')
-        ])
-        ->tag('kernel.event_listener', ['event' => ContaoCoreEvents::SITEMAP])
     ;
 
 };
