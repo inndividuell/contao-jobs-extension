@@ -20,7 +20,6 @@ return static function (ContainerConfigurator $container) {
         ->autowire()
         ->autoconfigure()
         ->set(SitemapListener::class)
-            ->args([service('database_connection')])
     ;
 
 };
