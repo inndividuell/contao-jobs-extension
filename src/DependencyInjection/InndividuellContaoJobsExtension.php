@@ -10,12 +10,11 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 
-final class JobsExtensionExtension extends Extension
+final class InndividuellContaoJobsExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
         $loader->load('services.php');
-        dd(_METHOD_);
     }
 }

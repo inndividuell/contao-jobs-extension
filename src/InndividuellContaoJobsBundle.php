@@ -13,7 +13,7 @@ namespace Inndividuell\ContaoJobsExtension;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class JobsExtensionBundle extends Bundle
+class InndividuellContaoJobsBundle extends Bundle
 {
     public function getPath(): string
     {
