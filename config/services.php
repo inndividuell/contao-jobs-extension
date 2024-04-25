@@ -16,8 +16,8 @@ use Doctrine\DBAL\Connection;
 return static function (ContainerConfigurator $container) {
 
     $container->services()
-        ->args([service('database_connection')])
         ->set(SitemapListener::class)
+        ->args([service('database_connection')])
     ;
 
 };
