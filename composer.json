@@ -39,7 +39,16 @@
     "autoload": {
         "psr-4": {
             "Inndividuell\\ContaoJobsExtension\\": "src/"
-        }
+        },
+      "classmap": [
+        "src/Resources/contao/"
+      ],
+      "exclude-from-classmap": [
+        "src/Resources/contao/config/",
+        "src/Resources/contao/dca/",
+        "src/Resources/contao/languages/",
+        "src/Resources/contao/templates/"
+      ]
     },
     "autoload-dev": {
         "psr-4": {
