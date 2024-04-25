@@ -17,7 +17,7 @@ return static function (ContainerConfigurator $container) {
 
     $container->services()
         ->set(SitemapListener::class)
-        ->args([service('database_connection')])
+            ->args([service('database_connection')])
     ;
 
 };
