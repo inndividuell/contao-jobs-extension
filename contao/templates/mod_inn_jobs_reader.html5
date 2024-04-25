@@ -1,1 +1,4 @@
 Jobs Reader!!!
+<?php
+echo $this->alias;
+?>
