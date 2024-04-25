@@ -49,7 +49,7 @@ $GLOBALS['TL_DCA']['tl_inn_jobs_category'] = array
         (
             'fields'                  => array('id','image', 'title'),
             'showColumns'             => true,
-            'label_callback'            => array('tl_inn_jobs', 'getListData')
+            'label_callback'            => array('tl_inn_jobs_category', 'getListData')
         ),
         'global_operations' => array
         (
