@@ -1,5 +1,6 @@
 <?php
 use Inndividuell\ContaoJobsExtension\ModuleJobReader;
+use Inndividuell\ContaoJobsExtension\ModuleJobList;
 /**
  * Back end modules
  */
@@ -20,7 +21,8 @@ $GLOBALS['BE_MOD']['inn_jobs']['tl_inn_jobs_types'] = array(
 
 $GLOBALS['FE_MOD']['inn_jobs'] = array
 (
-    'jobsreader'    => ModuleJobReader::class
+    'jobsreader'    => ModuleJobReader::class,
+    'jobslist'    => ModuleJobList::class
 );
 
 //
