@@ -5,7 +5,7 @@ namespace Inndividuell\ContaoJobsExtension;
 
 use Contao\Config;
 use Contao\Input;
-
+use Contao\PageModel;
 class ModuleJobList extends \Module
 {
     protected $strTemplate = 'mod_inn_jobs_list';
@@ -17,7 +17,26 @@ class ModuleJobList extends \Module
 
     protected function compile()
     {
+        $detail_page = $this->inn_jobslist_detail_page;
+        $detail_page_obj = PageModel::findByPk($detail_page);
+        $detail_page_url  = str_replace('.html','/',$detail_page_obj->getAbsoluteUrl());
+        $button_text = $this->inn_jobslist_detail_button_text;
+        $sorting = $this->inn_jobslist_sorting;
+        $limit = $this->inn_jobslist_limit;
+        $order_by = 'id DESC';
+        $limit_sql = '';
+        if($sorting == 'alphabet') {
+            $order_by = 'name ASC';
+        }
+        if($limit != 0){
+            $limit_sql = 'LIMIT '.$limit;
+        }
+        $sql_string = 'SELECT * FROM tl_inn_jobs WHERE published=1 ORDER BY '.$order_by.' '.$limit_sql;
 
+        $items = $this->Database->query($sql_string)->fetchAllAssoc();
+        $this->Template->items = $items;
+        $this->Template->detail_page_url = $detail_page_url;
+        $this->Template->button_text = $button_text;
     }
 
 }
