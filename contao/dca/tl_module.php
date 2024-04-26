@@ -7,7 +7,7 @@ use Contao\Controller;
 use Contao\DataContainer;
 use Contao\System;
 
-$GLOBALS['TL_DCA']['tl_module']['palettes']['jobslist']         = '{title_legend},name,type;{config_legend},inn_jobslist_items,inn_jobslist_sorting,inn_jobslist_limit,inn_jobslist_detail_button_text;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['jobslist']         = '{title_legend},name,type;{config_legend},inn_jobslist_detail_page,inn_jobslist_items,inn_jobslist_sorting,inn_jobslist_limit,inn_jobslist_detail_button_text;{expert_legend:hide},guests,cssID';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['jobsreader']         = '{title_legend},name,type;{config_legend},inn_jobsreader_duties_headline,inn_jobsreader_requirements_headline,inn_jobsreader_back_link_text,inn_jobsreader_back_link_page,inn_jobsreader_application_link,inn_jobsreader_email_link,inn_jobsreader_whatsapp_link;{expert_legend:hide},guests,cssID';
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['inn_jobsreader_duties_headline'] = array
@@ -59,7 +59,12 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['inn_jobsreader_back_link_page'] = arr
     'eval' => array('fieldType' => 'radio', 'mandatory' => true)
 );
 
-
+$GLOBALS['TL_DCA']['tl_module']['fields']['inn_jobslist_detail_page'] = array
+(
+    'sql' => "int(10) unsigned NOT NULL default '0'",
+    'inputType' => 'pageTree',
+    'eval' => array('fieldType' => 'radio', 'mandatory' => true)
+);
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['inn_jobslist_items'] = array
 (
