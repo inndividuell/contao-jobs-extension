@@ -8,7 +8,7 @@ use Contao\Input;
 
 class ModuleJobList extends \Module
 {
-    protected $strTemplate = 'mod_inn_jobs_reader';
+    protected $strTemplate = 'mod_inn_jobs_list';
     public function generate()
     {
 
