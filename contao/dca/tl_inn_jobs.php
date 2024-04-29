@@ -122,7 +122,7 @@ $GLOBALS['TL_DCA']['tl_inn_jobs'] = array
 
     'palettes' => array
     (
-        'default'                     => '{title_legend},name,alias;{data_legend},job_category,job_type,hours_per_day,salary;{address_legend},address_street,address_city,address_postcode;',
+        'default'                     => '{title_legend},name,alias;{data_legend},job_category,job_type,duties,requirements,hours_per_day,salary;{address_legend},address_street,address_city,address_postcode;',
 
     ),
 
