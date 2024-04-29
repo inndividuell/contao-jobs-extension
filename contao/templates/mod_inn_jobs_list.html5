@@ -1,4 +1,51 @@
-Jobs List!!!
 <?php
 
 ?>
+<div class="inn-jobs-list">
+
+    <div class="inn-jobs-list-grid">
+        <?php foreach ($this->items as $item):?>
+            <div class="inn-jobs-list-item">
+                <div class="inn-jobs-list-upper">
+                    <div class="inn-jobs-list-headline">
+                        <h3><?=$item['name']?></h3>
+                    </div>
+                    <div class="inn-jobs-list-city">
+                        <div class="v-location-icon"></div>
+                        <div class="inn-jobs-location-city">
+                            <?=$item['address_city']?>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="inn-jobs-list-actions">
+                    <div class="v-arrow-button">
+                        <a href="<?=$this->detail_page_url?><?=$item['alias']?>.html">
+                            <?=$this->button_text?>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach;?>
+        <?php if($this->cta_position == '0' || $this->cta_position == 0 || !$this->cta_position == '0' ):?>
+            <?php if($this->cta_headline && $this->cta_button_text && $this->cta_button_url):?>
+                <div class="inn-jobs-list-item inn-jobs-list-cta-item">
+                    <div class="inn-jobs-list-cta-headline">
+                        <h3><?=$this->cta_headline?></h3>
+                    </div>
+                    <div class="v-button v-white">
+                        <a href="<?=$this->cta_button_url?>">
+                            <?=$this->cta_button_text?>
+                        </a>
+                    </div>
+                </div>
+            <?php endif;?>
+        <?php endif;?>
+        <?php if ($this->add_image): ?>
+            <div class="inn-list-item-image">
+                <?=$this->add_image?>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>

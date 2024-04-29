@@ -23,12 +23,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['inn_jobslist_cta_position'] = array
     'inputType'               => 'text',
     'sql'                     => "text NULL"
 );
-$GLOBALS['TL_DCA']['tl_module']['fields']['inn_jobslist_cta_button_text'] = array
-(
-    'exclude'                 => true,
-    'inputType'               => 'text',
-    'sql'                     => "text NULL"
-);
 $GLOBALS['TL_DCA']['tl_module']['fields']['inn_jobslist_cta_button_url'] = array
 (
     'exclude'   => true,
