@@ -122,7 +122,7 @@ $GLOBALS['TL_DCA']['tl_inn_jobs'] = array
 
     'palettes' => array
     (
-        'default'                     => '{title_legend},name,alias;{data_legend},job_category,job_type,duties,requirements,hours_per_day,salary;{address_legend},address_street,address_city,address_postcode;',
+        'default'                     => '{title_legend},name,alias;{data_legend},job_category,job_type,duties,requirements,hours_per_day,salary,job_download;{address_legend},address_street,address_city,address_postcode;',
 
     ),
 
@@ -195,6 +195,19 @@ $GLOBALS['TL_DCA']['tl_inn_jobs'] = array
             'sql'                   => 'text  NULL',
             'options_callback'        => ['tl_inn_jobs', 'getJobTypes'],
         ),
+        'job_download' => array
+        (
+            'label' => &$GLOBALS['TL_LANG']['tl_example']['example_field'],
+            'exclude' => true,
+            'inputType' => 'fileTree',
+            'eval' => array(
+                'filesOnly' => true,
+                'extensions' => 'pdf,jpeg,jpg,png,doc,docx',
+                'fieldType' => 'radio',
+                'mandatory' => false
+            ),
+            'sql' => "binary(16) NULL",
+            ),
         'hours_per_day' => array
         (
             'exclude'                 => true,

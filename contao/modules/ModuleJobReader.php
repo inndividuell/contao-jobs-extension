@@ -30,13 +30,14 @@ class ModuleJobReader extends \Module
     {
         // TODO: Implement compile() method.
         $foo = 'bar';
+        $alias = Input::get('items');
         $back_page = $this->inn_jobsreader_back_link_page;
         $back_page_obj = PageModel::findByPk($back_page);
         $back_page_url  = str_replace('.html','/',$back_page_obj->getAbsoluteUrl());
         $back_page_text = $this->inn_jobsreader_back_link_text;
-        $sql_string = "SELECT tl_inn_jobs.*,tl_inn_jobs_type.title as job_type_title FROM tl_inn_jobs  LEFT JOIN tl_inn_jobs_type ON tl_inn_jobs.job_type = tl_inn_jobs_type.id  WHERE tl_inn_jobs.published=1 AND alias='".$this->alias."'";
+        $sql_string = "SELECT tl_inn_jobs.*,tl_inn_jobs_type.title as job_type_title FROM tl_inn_jobs  LEFT JOIN tl_inn_jobs_type ON tl_inn_jobs.job_type = tl_inn_jobs_type.id  WHERE tl_inn_jobs.published=1 AND alias='".$alias."'";
         $item = $this->Database->query($sql_string)->fetchAllAssoc()[0];
-        $alias = Input::get('items');
+
         $this->Template->alias = $alias;
         $this->Template->item = $item;
         $this->Template->back_url = $back_page_url;
