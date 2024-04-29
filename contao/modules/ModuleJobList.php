@@ -36,7 +36,7 @@ class ModuleJobList extends \Module
         if($limit != 0){
             $limit_sql = 'LIMIT '.$limit;
         }
-        $sql_string = 'SELECT * FROM tl_inn_jobs WHERE published=1 ORDER BY '.$order_by.' '.$limit_sql;
+        $sql_string = 'SELECT tl_inn_jobs.*,tl_inn_jobs_type.title as job_type_title FROM tl_inn_jobs  LEFT JOIN tl_inn_jobs_type ON tl_inn_jobs.job_type = tl_inn_jobs_type.id  WHERE tl_inn_jobs.published=1 ORDER BY '.$order_by.' '.$limit_sql;
 
         $items = $this->Database->query($sql_string)->fetchAllAssoc();
         $this->Template->limit = $limit;
