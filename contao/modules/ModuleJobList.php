@@ -26,6 +26,8 @@ class ModuleJobList extends \Module
         $button_text = $this->inn_jobslist_detail_button_text;
         $sorting = $this->inn_jobslist_sorting;
         $limit = $this->inn_jobslist_limit;
+        $new_items = $this->inn_jobslist_items_new;
+        $new_items_show = $this->inn_jobslist_items_new_show;
         $order_by = 'id DESC';
         $limit_sql = '';
         if($sorting == 'alphabet') {
