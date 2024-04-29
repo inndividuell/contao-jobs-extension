@@ -119,7 +119,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['inn_jobslist_items_new'] = array
 $GLOBALS['TL_DCA']['tl_module']['fields']['inn_jobslist_items_new_show'] = array
 (
     'exclude'                 => true,
-    'inputType'               => 'text',
+    'inputType'               => 'checkbox',
     'eval'                    => array('mandatory'=>false),
     'sql'                     => "char(1) NULL"
 );
