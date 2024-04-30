@@ -37,7 +37,15 @@ class ModuleJobReader extends \Module
         $back_page_text = $this->inn_jobsreader_back_link_text;
         $sql_string = "SELECT tl_inn_jobs.*,tl_inn_jobs_type.title as job_type_title FROM tl_inn_jobs  LEFT JOIN tl_inn_jobs_type ON tl_inn_jobs.job_type = tl_inn_jobs_type.id  WHERE tl_inn_jobs.published=1 AND alias='".$alias."'";
         $item = $this->Database->query($sql_string)->fetchAllAssoc()[0];
+        $download_path = false;
+        if($item['job_download']) {
+            $file = \Contao\FilesModel::findByUuid($item['job_download']);
+            if ($file !== null) {
+                $download_path = $file->path;
+            }
+        }
 
+        $this->Template->download_path = $download_path;
         $this->Template->alias = $alias;
         $this->Template->item = $item;
         $this->Template->back_url = $back_page_url;
