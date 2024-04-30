@@ -8,7 +8,7 @@ use Contao\DataContainer;
 use Contao\System;
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['jobslist']         = '{title_legend},name,type;{config_legend},inn_jobslist_detail_page,inn_jobslist_items_new,inn_jobslist_items_new_show,inn_jobslist_items_type_show,inn_jobslist_sorting,inn_jobslist_limit,inn_jobslist_detail_button_text;{cta_legend:hide},inn_jobslist_cta_headline,inn_jobslist_cta_button_text,inn_jobslist_cta_button_url,inn_jobslist_cta_position,inn_jobslist_add_image;{expert_legend:hide},guests,cssID';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['jobsreader']         = '{title_legend},name,type;{config_legend},inn_jobsreader_duties_headline,inn_jobsreader_requirements_headline,inn_jobsreader_back_link_text,inn_jobsreader_back_link_page,inn_jobsreader_email_text,inn_jobsreader_application_link,inn_jobsreader_application_link_text,inn_jobsreader_email_link,inn_jobsreader_email_text,inn_jobsreader_whatsapp_link,inn_jobsreader_whatsapp_link_text;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['jobsreader']         = '{title_legend},name,type;{config_legend},inn_jobsreader_duties_headline,inn_jobsreader_requirements_headline,inn_jobsreader_back_link_text,inn_jobsreader_back_link_page,inn_jobsreader_email_text,inn_jobsreader_application_link,inn_jobsreader_application_link_text,inn_jobsreader_email_link,inn_jobsreader_email_link_text,inn_jobsreader_whatsapp_link,inn_jobsreader_whatsapp_link_text;{expert_legend:hide},guests,cssID';
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['inn_jobslist_cta_headline'] = array
 (
