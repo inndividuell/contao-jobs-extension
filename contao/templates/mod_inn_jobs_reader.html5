@@ -1,4 +1,170 @@
-Jobs Reader!!!
 <?php
-echo $this->alias;
+
+use Contao\PageModel;
+
+$item = $this->item;
+
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$currentUrl = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+$url = $currentUrl;
+
+if($this->inn_jobsreader_email_text){
+    $betreff = $item['name']."- Jobangebot gefunden auf isnow.de";
+    $text = $this->inn_jobsreader_email_text."\n";
+    $mailto_link = 'mailto:?subject=' . $betreff . '&body=' . $text . urlencode($url);
+
+}
+
+
 ?>
+
+<div class="inn-jobs-reader">
+    <div class="inn-jobs-reader-back-link">
+        <div class="v-arrow-button v-arrow-left">
+            <a href="<?=$this->back_url?>">
+                <?=$this->back_text?>
+            </a>
+        </div>
+    </div>
+    <div class="inn-jobs-reader-container">
+        <div class="inn-jobs-reader-left">
+            <div class="inn-jobs-reader-name">
+                <h1 class="h3-font-size"><?=$item['name']?></h1>
+            </div>
+            <div class="inn-jobs-reader-duties inn-jobs-reader-info-container">
+                <h2 class="h4-font-size"><?=$this->inn_jobsreader_duties_headline?></h2>
+                <div class="inn-jobs-reader-duties-container inn-jobs-reader-info-text-container">
+                    <?=$item['duties']?>
+                </div>
+            </div>
+            <div class="inn-jobs-reader-requirements inn-jobs-reader-info-container">
+                <h2 class="h4-font-size"><?=$this->inn_jobsreader_requirements_headline?></h2>
+                <div class="inn-jobs-reader-duties-container inn-jobs-reader-info-text-container">
+                    <?=$item['requirements']?>
+                </div>
+            </div>
+        </div>
+        <div class="inn-jobs-reader-right">
+            <div class="inn-jobs-details-share">
+                <div class="inn-jobs-details">
+                    <h2 class="h4-font-size">
+                        Details
+                    </h2>
+                    <div class="inn-job-details-container">
+                        <div class="single-job-details">
+                            <div class="job-details-icon v-icon-secondary-bg-small">
+                                <i class="lni lni-map-marker"></i>
+                            </div>
+                            <div class="job-details-text">
+                                <?=$item['address_city']?>
+                            </div>
+                        </div>
+                        <div class="single-job-details">
+                            <div class="job-details-icon v-icon-secondary-bg-small">
+                                <i class="lni lni-timer"></i>
+                            </div>
+                            <div class="job-details-text">
+                                <?=$item['hours_per_day']?> / Tag
+                            </div>
+                        </div>
+                        <div class="single-job-details">
+                            <div class="job-details-icon v-icon-secondary-bg-small">
+                                <i class="lni lni-coin"></i>
+                            </div>
+                            <div class="job-details-text">
+                                <?=$item['salary']?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inn-jobs-share">
+                    <h2 class="h4-font-size">
+                        Teilen
+                    </h2>
+                    <div class="inn-jobs-share-container">
+                        <?php if($item['job_download']):?>
+                        <div class="single-inn-jobs-share-icon">
+                            <a download href="<?=$this->download_path?>" class="v-icon-primary-bg">
+                                <i class="lni lni-download"></i>
+                            </a>
+                        </div>
+                        <?php endif;?>
+                        <div class="single-inn-jobs-share-icon">
+                            <a class="copyLink v-icon-primary-bg" href="<?=$currentUrl?>">
+                                <i class="lni lni-link"></i>
+                            </a>
+                        </div>
+                        <?php if($this->inn_jobsreader_email_text):?>
+                        <div class="single-inn-jobs-share-icon">
+                            <a href="<?=$mailto_link?>" class="v-icon-primary-bg">
+                                <i class="lni lni-envelope"></i>
+                            </a>
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="inn-job-reader-actions">
+                <?php if($this->inn_jobsreader_application_link && $this->inn_jobsreader_application_link_text):?>
+                    <?php
+                    $application_page = PageModel::findByPk($this->inn_jobsreader_application_link);
+                    $application_url = $application_page->getAbsoluteUrl();
+                    ?>
+                    <div class="v-button v-secondary v-job-application-button">
+                        <a href="<?=$application_url?>">
+                            <?=$this->inn_jobsreader_application_link_text?>
+                        </a>
+                    </div>
+                <?php endif;?>
+                <?php if($this->inn_jobsreader_email_link && $this->inn_jobsreader_email_link_text):?>
+                    <?php
+
+                    ?>
+                    <div class="v-button v-primary v-job-email-button">
+                        <a href="mailto:<?=$this->inn_jobsreader_email_link?>">
+                            <?=$this->inn_jobsreader_email_link_text?>
+                        </a>
+                    </div>
+                <?php endif;?>
+                <?php if($this->inn_jobsreader_whatsapp_link && $this->inn_jobsreader_whatsapp_link_text):?>
+                    <?php
+                    ?>
+                    <div class="v-button v-primary v-job-whatsapp-button">
+                        <a href="<?=$this->inn_jobsreader_whatsapp_link?>">
+                            <?=$this->inn_jobsreader_whatsapp_link_text?>
+                        </a>
+                    </div>
+                <?php endif;?>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.copyLink').click(function (e) {
+            e.preventDefault();
+            var temp = $("<input>");
+            $("body").append(temp);
+            temp.val($(this).attr('href')).select();
+            document.execCommand("copy");
+            temp.remove();
+
+            // Show Message
+            var message = $('<span class="copyLink-popup-msg">')
+                .text('In Zwischenablage kopiert')
+                .prependTo($(this));
+
+            // Hide message after 2 seconds
+            setTimeout(function() {
+                message.fadeOut(function() {
+                    message.remove();
+                });
+            }, 2000);
+        });
+    });
+</script>
