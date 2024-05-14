@@ -50,7 +50,11 @@ class ModuleJobList extends \Module
 
         if($this->inn_jobslist_add_image && ($objImage = FilesModel::findByUuid($this->inn_jobslist_add_image)) !== null)
         {
-            $this->Template->add_image = Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objImage->path, array("",""))->getUrl(TL_ROOT));
+            $size = array("","");
+            if($this->inn_jobslist_add_image_size){
+                $size = $this->inn_jobslist_add_image_size;
+            }
+            $this->Template->add_image = Image::getHtml(\System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objImage->path, $size)->getUrl(TL_ROOT));
         }
     }
 
