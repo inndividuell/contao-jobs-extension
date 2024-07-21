@@ -122,7 +122,7 @@ $GLOBALS['TL_DCA']['tl_inn_jobs'] = array
 
     'palettes' => array
     (
-        'default'                     => '{title_legend},name,alias;{data_legend},job_category,job_type,duties,requirements,hours_per_day,salary,job_download;{address_legend},address_street,address_city,address_postcode;',
+        'default'                     => '{title_legend},name,alias;{data_legend},job_category,job_type,duties,requirements,hours_per_day,salary,job_download,image;{address_legend},address_street,address_city,address_postcode;',
 
     ),
 
@@ -247,6 +247,14 @@ $GLOBALS['TL_DCA']['tl_inn_jobs'] = array
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>false, 'maxlength'=>255),
             'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+
+        'image' => array
+        (
+            'inputType'     => 'fileTree',
+            'exclude'       => true,
+            'eval'          => array('fieldType'=>'radio', 'multiple'=>false, 'files'=>true, 'filesOnly'=>true, 'extensions'=>\Config::get('validImageTypes'), 'isGallery'=>false),
+            'sql'           => "blob  NULL",
         ),
 
         'published' => array
