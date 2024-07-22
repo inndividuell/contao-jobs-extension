@@ -6,16 +6,16 @@ use Inndividuell\ContaoJobsExtension\ModuleJobList;
  */
 array_insert($GLOBALS['BE_MOD'], 1, array
 (
-    'inn_jobs' => array
+    'inn_jobs_menu' => array
     ()
 ));
-$GLOBALS['BE_MOD']['inn_jobs']['inn_jobs'] = array(
+$GLOBALS['BE_MOD']['inn_jobs_menu']['inn_jobs'] = array(
     'tables' => array('tl_inn_jobs')
 );
-$GLOBALS['BE_MOD']['inn_jobs']['inn_jobs_categories'] = array(
+$GLOBALS['BE_MOD']['inn_jobs_menu']['inn_jobs_categories'] = array(
     'tables' => array('tl_inn_jobs_category')
 );
-$GLOBALS['BE_MOD']['inn_jobs']['tl_inn_jobs_types'] = array(
+$GLOBALS['BE_MOD']['inn_jobs_menu']['tl_inn_jobs_types'] = array(
     'tables' => array('tl_inn_jobs_type')
 );
 
