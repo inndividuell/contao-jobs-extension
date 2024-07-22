@@ -28,7 +28,7 @@ class ModuleJobList extends \Module
         $limit = $this->inn_jobslist_limit;
         $new_items = $this->inn_jobslist_items_new;
         $new_items_show = $this->inn_jobslist_items_new_show;
-        $order_by = 'id DESC';
+        $order_by = 'sorting ASC';
         $limit_sql = '';
         if($sorting == 'alphabet') {
             $order_by = 'name ASC';
