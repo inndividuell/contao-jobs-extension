@@ -44,6 +44,24 @@ if($this->inn_jobsreader_email_text){
                     <?=$item['requirements']?>
                 </div>
             </div>
+            <?php if($item['image']):?>
+                <?php
+                $container = System::getContainer();
+                $objFile = \Contao\FilesModel::findByUuid($item['image']);
+                $pictureFactory = $container->get('contao.image.picture_factory');
+                $rootDir = $container->getParameter('kernel.project_dir');
+
+                // Use PictureFactory to create the responsive picture array
+                $picture = $pictureFactory->create($rootDir.'/'.$objFile->path);
+                $data = [
+                        'img' => $picture->getImg($rootDir),
+                        'sources' => $picture->getSources($rootDir),
+                ];
+                ?>
+                <div class="inn-jobs-reader-image inn-jobs-reader-info-container">
+                    <?php     $this->insert('picture_default', $data); ?>
+                </div>
+            <?php endif;?>
         </div>
         <div class="inn-jobs-reader-right">
             <div class="inn-jobs-details-share">
@@ -60,22 +78,26 @@ if($this->inn_jobsreader_email_text){
                                 <?=$item['address_city']?>
                             </div>
                         </div>
-                        <div class="single-job-details">
-                            <div class="job-details-icon v-icon-secondary-bg-small">
-                                <i class="lni lni-timer"></i>
+                        <?php if($item['hours_per_day']):?>
+                            <div class="single-job-details">
+                                <div class="job-details-icon v-icon-secondary-bg-small">
+                                    <i class="lni lni-timer"></i>
+                                </div>
+                                <div class="job-details-text">
+                                    <?=$item['hours_per_day']?> / Tag
+                                </div>
                             </div>
-                            <div class="job-details-text">
-                                <?=$item['hours_per_day']?> / Tag
+                        <?php endif;?>
+                        <?php if($item['salary']):?>
+                            <div class="single-job-details">
+                                <div class="job-details-icon v-icon-secondary-bg-small">
+                                    <i class="lni lni-coin"></i>
+                                </div>
+                                <div class="job-details-text">
+                                    <?=$item['salary']?>
+                                </div>
                             </div>
-                        </div>
-                        <div class="single-job-details">
-                            <div class="job-details-icon v-icon-secondary-bg-small">
-                                <i class="lni lni-coin"></i>
-                            </div>
-                            <div class="job-details-text">
-                                <?=$item['salary']?>
-                            </div>
-                        </div>
+                        <?php endif;?>
                     </div>
                 </div>
                 <div class="inn-jobs-share">
@@ -84,11 +106,11 @@ if($this->inn_jobsreader_email_text){
                     </h2>
                     <div class="inn-jobs-share-container">
                         <?php if($item['job_download']):?>
-                        <div class="single-inn-jobs-share-icon">
-                            <a download href="<?=$this->download_path?>" class="v-icon-primary-bg">
-                                <i class="lni lni-download"></i>
-                            </a>
-                        </div>
+                            <div class="single-inn-jobs-share-icon">
+                                <a download href="<?=$this->download_path?>" class="v-icon-primary-bg">
+                                    <i class="lni lni-download"></i>
+                                </a>
+                            </div>
                         <?php endif;?>
                         <div class="single-inn-jobs-share-icon">
                             <a class="copyLink v-icon-primary-bg" href="<?=$currentUrl?>">
@@ -96,11 +118,11 @@ if($this->inn_jobsreader_email_text){
                             </a>
                         </div>
                         <?php if($this->inn_jobsreader_email_text):?>
-                        <div class="single-inn-jobs-share-icon">
-                            <a href="<?=$mailto_link?>" class="v-icon-primary-bg">
-                                <i class="lni lni-envelope"></i>
-                            </a>
-                        </div>
+                            <div class="single-inn-jobs-share-icon">
+                                <a href="<?=$mailto_link?>" class="v-icon-primary-bg">
+                                    <i class="lni lni-envelope"></i>
+                                </a>
+                            </div>
                         <?php endif;?>
                     </div>
                 </div>

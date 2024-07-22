@@ -4,49 +4,48 @@ $new_items_show = $this->inn_jobslist_items_new_show;
 $job_type_show = $this->inn_jobslist_items_type_show;
 $counter = 1;
 ?>
-<div class="inn-jobs-list">
+<div class="inn-jobs-list <?=$this->class?>">
 
     <div class="inn-jobs-list-grid">
         <?php foreach ($this->items as $item):?>
-        <div class="inn-jobs-list-item">
-            <div class="inn-jobs-list-upper">
-                <div class="inn-jobs-list-headline">
-                    <h3><?=$item['name']?></h3>
+            <div class="inn-jobs-list-item">
+                <div class="inn-jobs-list-upper">
+                    <div class="inn-jobs-list-headline">
+                        <h3><?=$item['name']?></h3>
+
+                    </div>
+                    <?php if($job_type_show):?>
+                        <?php
+                        ?>
+                        <div class="inn-jobs-type">
+                            <?=$item['job_type_title']?>
+                        </div>
+                    <?php endif;?>
+                    <div class="inn-jobs-list-city">
+                        <div class="v-location-icon"></div>
+                        <div class="inn-jobs-location-city">
+                            <?=$item['address_city']?>
+                        </div>
+                    </div>
+                </div>
+                <div class="inn-jobs-list-actions">
+                    <div class="v-arrow-button">
+                        <a href="<?=$this->detail_page_url?><?=$item['alias']?>.html">
+                            <?=$this->button_text?>
+                        </a>
+                    </div>
                     <div class="inn-jobs-tag-container">
                         <?php if($new_items_show):?>
-                            <?php if($counter <= $new_items):?>
-                            <div class="inn-jobs-tag-new inn-jobs-tag">
-                                Neu
-                            </div>
+                            <?php if($item['featured']):?>
+                                <div class="inn-jobs-tag-new inn-jobs-tag">
+                                    Neu
+                                </div>
                             <?php endif;?>
                         <?php endif;?>
                     </div>
                 </div>
-                <?php if($job_type_show):?>
-                <?php
-                    ?>
-                    <div class="inn-jobs-type">
-                        <?=$item['job_type_title']?>
-                    </div>
-                <?php endif;?>
-                <div class="inn-jobs-list-city">
-                    <div class="v-location-icon"></div>
-                    <div class="inn-jobs-location-city">
-                        <?=$item['address_city']?>
-                    </div>
-                </div>
             </div>
-
-
-            <div class="inn-jobs-list-actions">
-                <div class="v-arrow-button">
-                    <a href="<?=$this->detail_page_url?><?=$item['alias']?>.html">
-                        <?=$this->button_text?>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <?php $counter++?>
+            <?php $counter++?>
         <?php endforeach;?>
         <?php if($this->cta_position == '0' || $this->cta_position == 0 || !$this->cta_position == '0' ):?>
             <?php if($this->cta_headline && $this->cta_button_text && $this->cta_button_url):?>
